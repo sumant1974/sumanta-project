@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin LTE 2</title>
+  <title>Eduskills Member Portal</title>
+  <link rel="icon" type="image/png" href="https://eduskillsfoundation.org/wp-content/uploads/2019/10/icon.png"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -36,5 +37,15 @@
   <!-- Bootstrap 3.3.6 -->
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
 
-  <?php include_once "functions.php" ?>
+  <?php 
+  include_once "functions.php";
+  include_once '../../lib/auth.php';
+  $auth=new Auth();
+  $userinfo=$auth->getUser();
+  print_r($userinfo);
+  if(!$userinfo)
+  {
+    header('Location: /pages/auth/login.php');
+  }
+  ?>
 </head>

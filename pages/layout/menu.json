@@ -1,0 +1,79 @@
+[ {
+    "role":"Admin",
+        "menu":[{
+            "name":"Institutions",
+            "link":"institutions.php",
+            "sub":[{
+                    "name":"College SPOCs",
+                    "link":"spocs.php"
+                },
+                {
+                    "name":"Educators",
+                    "link":"educators.php"
+                },
+                {
+                    "name":"Students",
+                    "link":"students.php"
+                }]
+
+                },
+                
+                {
+                    "name":"Partners",
+                    "link":"partners.php",
+                    "sub":[{
+                            "name":"Courses",
+                            "link":"courses.php"
+                            }]
+
+                },
+                {
+                    "name":"Campaigns",
+                    "link":"campaigns.php",
+                    "sub":[
+                        {
+                            "name":"Mails",
+                            "link":"mails.php"
+                        },
+                        
+                        {
+                            "name":"Configure SMTP",
+                            "link":"smtpconfig.php"
+                        }
+                        
+                        ]
+                }
+                
+                ]
+            
+            
+    },
+    {
+        "role":"SPOC",
+        "menu":[{
+            "name":"Educators",
+            "link":"educators.php"
+            },
+            {
+                "name":"Students",
+                "link":"students.php"
+            },
+            {
+                "name":"Support",
+                "link":"support.php"
+            }
+            ]
+    },
+    {
+        "role":"Educator",
+        "menu":[{
+            "name":"Students",
+            "link":"students.php"
+        },
+        {
+                "name":"Support",
+                "link":"support.php"
+            }
+            ]
+    }
+    ]
