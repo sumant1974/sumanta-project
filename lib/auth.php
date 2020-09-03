@@ -15,6 +15,7 @@ class Auth
     private $inst_id;
     private $firstname;
     private $lastname;
+    public $menu;
     public function __construct(){
        // $this->conn = $db;
 		//$allusers=array();
@@ -24,7 +25,7 @@ class Auth
         
        // $curl=curl_init();
        
-        $url="http://localhost:1080/eduskills/api/login.php";
+        $url="http://localhost:1080/eduskills/api/users/login.php";
         $data=array("user_id"=>$user_id,"user_pass"=>$user_pass);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
@@ -50,6 +51,7 @@ class Auth
        
        
     }
+    
     public function getUser()
     {
         if(isset($_SESSION["jwt"]))
@@ -66,6 +68,25 @@ class Auth
             $this->role_id = $decoded->data->role_id;
             $userinfo=array("firstname"=>$this->firstname,"lastname"=>$this->lastname,"inst_id"=>$this->inst_id,"role_id"=>$this->role_id,"user_id"=>$this->user_id);
             return $userinfo;
+        }
+    }
+    public function getMenu()
+    {
+        if(isset($_SESSION["jwt"]))
+        {
+            $this->jwt=$_SESSION["jwt"];
+            $url="http://localhost:1080/eduskills/api/roles/getmenu.php";
+        $data=array("jwt"=>$this->jwt);
+        //echo $url.$data['user_id'];
+        $result=$this->callAPI($url,json_encode($data));
+       /* curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        $result=curl_exec($curl);
+        curl_close($curl);*/
+        //echo $result;
+        if(!$result){die("Connection Failure");}
+        $this->menu=$result;
         }
     }
     private function callAPI($url, $data){

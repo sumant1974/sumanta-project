@@ -10,7 +10,7 @@
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="../../dist/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../dist/css/ionicons.min.css">
   <!-- Theme style -->
@@ -42,10 +42,15 @@
   include_once '../../lib/auth.php';
   $auth=new Auth();
   $userinfo=$auth->getUser();
-  print_r($userinfo);
+  //print_r($userinfo);
   if(!$userinfo)
   {
+    
     header('Location: /pages/auth/login.php');
+  }
+  else
+  {
+    $auth->getMenu();
   }
   ?>
 </head>
