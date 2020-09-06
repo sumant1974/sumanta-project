@@ -12,7 +12,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="../../dist/css/ionicons.min.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -29,11 +29,11 @@
 
   <!-- jQuery 2.2.3 -->
   <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip 
   <script>
     $.widget.bridge('uibutton', $.ui.button);
   </script>
-
+-->
   <!-- Bootstrap 3.3.6 -->
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
 
