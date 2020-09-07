@@ -36,7 +36,7 @@
 -->
   <!-- Bootstrap 3.3.6 -->
   <script src="../../bootstrap/js/bootstrap.min.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
   <?php 
   include_once "functions.php";
   include_once '../../lib/auth.php';

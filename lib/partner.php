@@ -9,6 +9,10 @@ use \Firebase\JWT\JWT;
 class Partner
 {
     private $jwt;
+    public $partner_name;
+    public $partner_programme;
+    public $partner_website;
+    public $partner_programme_website;
     public function __construct(){
        // $this->conn = $db;
 		//$allusers=array();
@@ -32,6 +36,28 @@ class Partner
         $result=json_decode($result);
         return $result;
         }
+    }
+    public function create()
+    {
+        if(isset($_SESSION["jwt"]))
+        {
+            $this->jwt=$_SESSION["jwt"];
+            $url="http://localhost:1080/eduskills/api/partners/create.php";
+
+        $data=array("jwt"=>$this->jwt,"partner_name"=>$this->partner_name,"partner_programme"=>$this->partner_programme,"partner_website"=>$this->partner_website,"partner_programme_website"=>$this->partner_programme_website);
+        //echo $url.$data['user_id'];
+        $result=$this->callAPI($url,json_encode($data));
+       /* curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        $result=curl_exec($curl);
+        curl_close($curl);*/
+        print_r($result);
+        if(!$result){die("Connection Failure");}
+        $result=json_decode($result);
+        return $result;
+        }
+        
     }
     private function callAPI($url, $data){
         $ch = curl_init();
