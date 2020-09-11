@@ -1,5 +1,5 @@
 <?php
-   include_once "./pheader.php";
+   include_once "./cheader.php";
    ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -9,7 +9,7 @@
    </h1>
    <ol class="breadcrumb">
       <li><a href="/pages/dashboard"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Partners</li>
+      <li class="active">Courses</li>
    </ol>
 </section>
 <!-- Main content -->
@@ -36,15 +36,13 @@
          <div class="small-box bg-green">
             <div class="inner">
                <h3><?php echo $dashboard->PartnersCount; ?></h3>
-               <p>Partners</p>
+               <p>Courses</p>
             </div>
             <div class="icon">
                <i class="fa fa-handshake-o"></i>
             </div>
-            <div align="center"><a class="btn btn-app bg-olive" data-toggle="modal" data-target="#modal-create">
-               <i class="fa fa-plus"></i> Add
-               </a>
-            </div>
+            <a href="/pages/partners/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            
          </div>
       </div>
       <!-- ./col -->
@@ -58,7 +56,10 @@
             <div class="icon">
                <i class="fa fa-book"></i>
             </div>
-            <a href="/pages/courses/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <div align="center"><a class="btn btn-app bg-olive" data-toggle="modal" data-target="#modal-create">
+               <i class="fa fa-plus"></i> Add
+               </a>
+            </div>
          </div>
       </div>
       <!-- ./col -->
@@ -79,52 +80,26 @@
       <!-- ./col -->
    </div>
    <!-- /.row -->
-   <div class="row" ng-app="myApp" ng-controller="editCtrl">
+   <div class="row">
+   <div class="col-md-3 col-sm-6 col-xs-12">
    <?php foreach($partners as $p) {?>
-   <div class="col-md-4">
-      <!-- Widget: user widget style 1 -->
-      <div class="box widget-user-2 box-warning">
-         <!-- Add the bg color to the header using any of the bg-* classes -->
-         <div class="widget-user-header bg-white with-border">
-            <div class="widget-user-image">
-               <img class="img-circle" src="http://logo.clearbit.com/<?php echo $p->partner_website; ?>" alt="Logo">
+      
+          <div class="info-box">
+          
+            <span class="info-box-icon"><img class="img-circle" src="http://logo.clearbit.com/<?php echo $p->partner_website; ?>" width="64px" alt="Logo"></span>
+
+            <div class="info-box-content">
+            <span class="badge bg-aqua pull-right"><?php echo $p->coursecount ?></span>
+              <span class="info-box-text"><?php echo $p->partner_name ?></span>
+              <span class="info-box-number"><a href="http://<?php echo $p->partner_website ?>"><?php echo $p->partner_website ?></a></span>
             </div>
-            <!-- /.widget-user-image -->
-            <h3 class="widget-user-username"><?php echo $p->partner_name; ?></h3>
-            <h5 class="widget-user-desc"><a href="http://<?php echo $p->partner_website; ?>" target="_blank"><?php echo $p->partner_website; ?></a></h5>
-         </div>
-         <div class="box-footer">
-            <ul class="nav nav-stacked">
-               <li style="padding:5px">Programme: <span class="pull-right"><?php echo $p->partner_programme; ?></span></li>
-               <li style="padding:5px">Programme Website: <span class="pull-right"><a href="http://<?php echo $p->partner_programme_website; ?>"><?php echo $p->partner_programme_website; ?></a></span></li>
-               <li style="padding:5px">
-                  <div class="user-footer">
-                     <div class="pull-left">
-                        <a class="btn btn-app" data-toggle="modal" data-target="#modal-edit" ng-click="fillValues('<?php echo $p->partner_id ?>', '<?php echo $p->partner_name ?>', '<?php echo $p->partner_website ?>', '<?php echo $p->partner_programme ?>', '<?php echo $p->partner_programme_website ?>')">
-                        <i class="fa fa-edit"></i>
-                        Edit
-                        </a>
-                        <a class="btn btn-app" data-toggle="modal" data-target="#modal-delete" ng-click="deleteConfirm('<?php echo $p->partner_id ?>', '<?php echo $p->partner_name ?>', '<?php echo $p->partner_programme ?>')">
-                        <i class="glyphicon glyphicon-remove-circle"></i>
-                        Delete
-                        </a>
-                     </div>
-                     <div class="pull-right">
-                        <a class="btn btn-app">
-                        <i class="fa fa-book"></i>
-                        Courses
-                        </a>
-                     </div>
-                  </div>
-               </li>
-            </ul>
-         </div>
-      </div>
-      <!-- /.widget-user -->
-   </div>
-   <!-- Modal Edit Dialog box -->
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        
    <?php } ?>
-   <div class="modal fade" id="modal-edit" style="display: none;" class="box box-primary">
+   </div>
+ <div class="modal fade" id="modal-edit" style="display: none;" class="box box-primary">
       <div class="modal-dialog">
          <form id="form_edit" name="form_edit" class="appnitro" role="form" method="post" action="/pages/partners/update.php">
             <input type="hidden" name="partner_id" id="partner_id" ng-value="partner_id">
