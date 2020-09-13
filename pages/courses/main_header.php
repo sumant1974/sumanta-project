@@ -113,6 +113,7 @@
         <th>Course Name</th>
         <th>Course Outline</th>
         <th>Partner Name</th>
+        <th>Action</th>
     </tr>
       </thead>
     
@@ -122,6 +123,7 @@
         <td>{{course.course_name}}</td>
         <td>{{course.course_outline}}</td>
         <td>{{course.partner_name}}</td>
+        <td><div class="btn-group-vertical"><button class="btn btn-default"><i class="fa fa-edit"></i></button><button class="btn btn-default"><i class="fa fa-trash"></i></button></div></td>
     </tr>
     </tbody>
     
