@@ -37,6 +37,46 @@ class Course
         return $result;
         }
     }
+    public function getPCourses()
+    {
+        if(isset($_SESSION["jwt"]))
+        {
+            $this->jwt=$_SESSION["jwt"];
+            $url="http://localhost:1080/eduskills/api/pcourses/getpcourses.php";
+        $data=array("jwt"=>$this->jwt,"partner_id"=>$this->partner_id);
+        //echo $url.$data['user_id'];
+        $result=$this->callAPI($url,json_encode($data));
+       /* curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        $result=curl_exec($curl);
+        curl_close($curl);*/
+        //echo $result;
+        if(!$result){die("Connection Failure");}
+        $result=json_decode($result);
+        return $result;
+        }
+    }
+    public function getAllCourses()
+    {
+        if(isset($_SESSION["jwt"]))
+        {
+            $this->jwt=$_SESSION["jwt"];
+            $url="http://localhost:1080/eduskills/api/pcourses/getallcourses.php";
+        $data=array("jwt"=>$this->jwt);
+        //echo $url.$data['user_id'];
+        $result=$this->callAPI($url,json_encode($data));
+       /* curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        $result=curl_exec($curl);
+        curl_close($curl);*/
+        //echo $result;
+        if(!$result){die("Connection Failure");}
+        $result=json_decode($result);
+        return $result;
+        }
+    }
     public function create()
     {
         if(isset($_SESSION["jwt"]))
