@@ -1,17 +1,16 @@
 <?php
 include_once "../layout/header.php";
-include_once "../../lib/partner.php";
-$partner=new Partner;
-$partner->partner_id=$_POST['partner_id'];
-$partner->partner_name=$_POST['partner_name'];
-$partner->partner_programme=$_POST['partner_programme'];
-$partner->partner_website=$_POST['partner_website'];
-$partner->partner_programme_website=$_POST['programme_website'];
-$result=$partner->update();
+include_once "../../lib/course.php";
+$course=new Course;
+$course->course_id=$_POST['course_id'];
+$course->course_name=$_POST['course_name'];
+$course->course_outline=$_POST['course_outline'];
+$course->partner_id=$_POST['partner_id'];
+$result=$course->update();
 $_SESSION['status']=$result->status;
 $_SESSION['msg']=$result->message;
 //print_r($result);
 //echo $_SESSION['status'];
 //echo $_SESSION['msg'];
-header('Location: /pages/partners/index.php');
+header('Location: /pages/courses/index.php');
 ?>

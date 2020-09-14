@@ -82,9 +82,9 @@ class Course
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/partners/create.php";
+            $url="http://localhost:1080/eduskills/api/pcourses/create.php";
 
-        $data=array("jwt"=>$this->jwt,"partner_name"=>$this->partner_name,"partner_programme"=>$this->partner_programme,"partner_website"=>$this->partner_website,"partner_programme_website"=>$this->partner_programme_website);
+        $data=array("jwt"=>$this->jwt,"course_name"=>$this->course_name,"course_outline"=>$this->course_outline,"partner_id"=>$this->partner_id);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
        /* curl_setopt($curl, CURLOPT_POST, 1);
@@ -104,9 +104,9 @@ class Course
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/partners/update.php";
+            $url="http://localhost:1080/eduskills/api/pcourses/update.php";
 
-        $data=array("jwt"=>$this->jwt,"partner_id"=>$this->partner_id, "partner_name"=>$this->partner_name,"partner_programme"=>$this->partner_programme,"partner_website"=>$this->partner_website,"partner_programme_website"=>$this->partner_programme_website);
+        $data=array("jwt"=>$this->jwt,"course_name"=>$this->course_name,"course_outline"=>$this->course_outline,"partner_id"=>$this->partner_id,"course_id"=>$this->course_id);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
        /* curl_setopt($curl, CURLOPT_POST, 1);
@@ -126,9 +126,9 @@ class Course
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/partners/delete.php";
+            $url="http://localhost:1080/eduskills/api/pcourses/delete.php";
 
-        $data=array("jwt"=>$this->jwt,"partner_id"=>$this->partner_id);
+        $data=array("jwt"=>$this->jwt,"course_id"=>$this->course_id);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
        /* curl_setopt($curl, CURLOPT_POST, 1);

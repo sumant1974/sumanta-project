@@ -7,7 +7,8 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
-
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="https://rawgit.com/lemonde/angular-ckeditor/master/angular-ckeditor.js"></script>
 
 
 
