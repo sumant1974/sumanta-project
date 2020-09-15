@@ -1,5 +1,5 @@
 <?php
-  $active_menu = "partners";
+  $active_menu = "Partners";
   include_once "../layout/header.php";
 ?>
 

@@ -110,7 +110,8 @@
                         </a>
                      </div>
                      <div class="pull-right">
-                        <a class="btn btn-app">
+                        <a class="btn btn-app" href="/pages/courses/index.php?partner_id=<?php echo $p->partner_id; ?>">
+                        <span class="badge bg-aqua"><?php echo $p->coursecount; ?></span>
                         <i class="fa fa-book"></i>
                         Courses
                         </a>

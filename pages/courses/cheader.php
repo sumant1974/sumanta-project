@@ -23,6 +23,12 @@
   $pcourse=new Course();
   $dashboard=$pcourse->getDashboard();
   $partners=$dashboard->Partners;
+  if(isset($_GET['partner_id']))
+  {
+    echo "<script> window.onload = function () {
+      angular.element(document.getElementById('partnerCtrl')).scope().partnerSelect(".$_GET['partner_id'].");
+  }</script>";
+  }
   //print_r($dashboard);
   
 ?>

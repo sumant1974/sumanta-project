@@ -82,7 +82,7 @@
         <!-- ./col -->
     </div>
     <!-- /.row -->
-    <div class="row" ng-app="myApp" data-ng-controller="partnerCtrl">
+    <div class="row" ng-app="myApp" data-ng-controller="partnerCtrl" id="partnerCtrl">
         <div class="col-md-3 col-sm-6 col-xs-12">
 
             <?php foreach($partners as $p) {?>
@@ -319,8 +319,6 @@ app.controller('partnerCtrl', function($scope, $http) {
         .then(function(response) {
             $scope.courses = response.data;
         });
-
-    outlineeditor =
         $scope.partnerSelect = function(pid) {
             var url = "getcourses.php";
             if ($scope.class[pid] === "") {

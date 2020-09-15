@@ -52,7 +52,7 @@ $htmlmenu = parseNodes($nodes);
           <img src="https://ui-avatars.com/api/?name=<?php echo $userinfo["firstname"]?>&rounded=true" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $userinfo["firstname"]." ".$userinfo["lastname"]?></p>
+          <p><?php echo $userinfo["firstname"]." ".$userinfo["lastname"]." ".$active_menu?></p>
           <a href="pages/dashboard"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
