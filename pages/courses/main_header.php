@@ -113,7 +113,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <table id="course-table" class="table table-bordered table-striped dataTable" datatable="ng">
+                    <table id="course-table" class="table table-bordered table-striped dataTable" datatable="ng" dt-options="dtOptions">
                         <thead>
                             <tr>
                                 <th>Sl. No.</th>
@@ -302,12 +302,12 @@ $(function() {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace('course_outline_add');
-
+    
     //bootstrap WYSIHTML5 - text editor
     //$('.textarea').wysihtml5()
 })
-var app = angular.module('myApp', ['datatables', 'ckeditor']);
-app.controller('partnerCtrl', function($scope, $http) {
+var app = angular.module('myApp', ['datatables', 'ckeditor','datatables.buttons']);
+app.controller('partnerCtrl', function($scope, $http, DTOptionsBuilder) {
     $scope.class = [];
     $scope.outlineeditor = {
         language: 'en',
@@ -349,17 +349,28 @@ app.controller('partnerCtrl', function($scope, $http) {
         $scope.course_id = $scope.courses[index].course_id;
         $scope.course_name = $scope.courses[index].course_name;
     };
-    $scope.dataTableOpt = {
-        //custom datatable options 
-        // or load data through ajax call also
-        "aLengthMenu": [
-            [10, 50, 100, -1],
-            [10, 50, 100, 'All']
-        ],
-    };
-    $scope.initDataTable = function() {
-        $('#course-table').dataTable();
-    };
+    
+    $scope.dtOptions = DTOptionsBuilder.newOptions()
+                        .withButtons([
+                                          {
+                                              extend:    'copy',
+                                              text:      '<i class="fa fa-files-o"></i> Copy',
+                                              titleAttr: 'Copy'
+                                          },
+										  {
+                                              extend:    'excel',
+                                              text:      '<i class="fa fa-file-text-o"></i> Excel',
+                                             titleAttr: 'Excel'
+                                          },
+                                          {
+                                              extend:    'print',
+                                              text:      '<i class="fa fa-print" aria-hidden="true"></i> Print',
+                                              titleAttr: 'Print'
+                                          }
+                                      ]
+                                    ) ;
+       
+   
 
 });
 var create=angular.module("coursecreate",[]);

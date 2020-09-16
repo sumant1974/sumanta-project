@@ -2,9 +2,10 @@
   function isActive($menu, $mode="full"){
     global $active_menu;
     if ($mode == "partial")
-      echo ($active_menu == $menu? "active": "");
+      $isactive=($active_menu == $menu? "active": "");
     else
-      echo ($active_menu == $menu? "class='active'": "");
+      $isactive=($active_menu == $menu? "class='active'": "");
+    return $isactive;
   }
   function parseNodes($nodes) {
     $ul = "<ul class='sidebar-menu'>\n<li class='header'>MAIN NAVIGATION</li>";
@@ -23,14 +24,16 @@ function parseChildNodes($nodes) {
   return $ul;
 }
 function parseNode($node) {
-    $li = "\t<li>";
+    $isactive=isActive($node->name);
+    $li = "\t<li ". $isactive .">";
     $li .= "<a href='" . $node->link . "'><i class='".$node->iclass."'></i><span>" . $node->name. "</span></a>";
     if (isset($node->sub)) $li .= parseChildNodes($node->sub);
     $li .= "</li>\n";
     return $li;
 }
 function parseChildNode($node) {
-  $li = "\t<li ". isActive($node->name) .">";
+  $isactive=isActive($node->name);
+  $li = "\t<li ". $isactive .">";
   $li .= "<a href='".$node->link."'><i class='".$node->iclass."'></i>".$node->name."</a>";
   if (isset($node->sub)) $li .= parseChildNodes($node->sub);
   $li .= "</li>\n";
