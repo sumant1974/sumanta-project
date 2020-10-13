@@ -87,6 +87,7 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Institutes</h3>
+                    <div cg-busy="myPromise"></div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -419,20 +420,20 @@
 </div>
 <!-- script -->
 <script>
-var app = angular.module('myApp', ['datatables', 'ckeditor', 'datatables.buttons']);
-app.controller('instCtrl', function($scope, $http, DTOptionsBuilder) {
+var app = angular.module('myApp', ['datatables', 'ngResource', 'ckeditor', 'datatables.buttons', 'cgBusy']);
+app.controller('instCtrl', function($scope, $http, $resource, DTOptionsBuilder) {
     $scope.class = [];
     $scope.outlineeditor = {
         language: 'en',
         allowedContent: true,
         entities: false
     };
-
-    $http.get("getinsts.php")
+    //$scope.loading='<b>Loading Data.. Please wait..</b><i class="fas fa-sync fa-spin"></i>';
+    $scope.myPromise = $resource('getinsts.php').query().$promise
         .then(function(response) {
-            $scope.insts = response.data;
+            $scope.insts = response;
         });
-
+        //$scope.loading='';
     $http.get("/lib/states.json")
         .then(function(response) {
             $scope.states = response.data;

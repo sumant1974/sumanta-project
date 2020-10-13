@@ -16,8 +16,8 @@
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script src="/angular-datatable/plugins/buttons/angular-datatables.buttons.min.js"></script>
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-resource.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-busy/4.1.4/angular-busy.js" integrity="sha512-2PrHWUeavJCJBlI9kigBFmivpngZYIa8kvM4rI7pDVNWqKdwanTk7keJgpO8OxaxOcyitwKvn7rv3NbM20QpXg==" crossorigin="anonymous"></script>
 
 
 <script src="../../plugins/fastclick/fastclick.js"></script>

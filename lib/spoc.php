@@ -6,28 +6,27 @@ include_once 'php-jwt-master/src/SignatureInvalidException.php';
 include_once 'php-jwt-master/src/JWT.php';
 use \Firebase\JWT\JWT;
 
-class Institute
+class Spoc
 {
     private $jwt;
+    public $spoc_id;
     public $inst_id;
-    public $inst_name;
-    public $inst_shortname;
-    public $inst_state;
-    public $inst_address;
-    public $principal_name;
-    public $inst_phone;
-    public $inst_email;
-    public $inst_website;
+    public $spoc_firstname;
+    public $spoc_lastname;
+    public $spoc_mobile;
+    public $spoc_email;
+    public $spoc_alternate_mobile;
+    public $spoc_alternate_email;
     public function __construct(){
        // $this->conn = $db;
 		//$allusers=array();
     }
-    public function getaDashboard()
+    public function getSpocs()
     {
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/institutes/getadashboard.php";
+            $url="http://localhost:1080/eduskills/api/spocs/getispocs.php";
         $data=array("jwt"=>$this->jwt);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
@@ -42,15 +41,14 @@ class Institute
         return $result;
         }
     }
-    
     public function create()
     {
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/institutes/create.php";
+            $url="http://localhost:1080/eduskills/api/spocs/create.php";
 
-        $data=array("jwt"=>$this->jwt,"inst_name"=>$this->inst_name,"inst_shortname"=>$this->inst_shortname,"inst_state"=>$this->inst_state,"inst_phone"=>$this->inst_phone,"inst_website"=>$this->inst_website,"principal_name"=>$this->principal_name,"inst_address"=>$this->inst_address,"inst_email"=>$this->inst_email);
+        $data=array("jwt"=>$this->jwt,"spoc_firstname"=>$this->spoc_firstname,"spoc_lastname"=>$this->spoc_lastname,"inst_id"=>$this->inst_id,"spoc_mobile"=>$this->spoc_mobile,"spoc_email"=>$this->spoc_email,"spoc_alternate_email"=>$this->spoc_alternate_email,"spoc_alternate_mobile"=>$this->spoc_alternate_mobile);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
        /* curl_setopt($curl, CURLOPT_POST, 1);
@@ -70,9 +68,9 @@ class Institute
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/institutes/update.php";
+            $url="http://localhost:1080/eduskills/api/spocs/update.php";
 
-        $data=array("jwt"=>$this->jwt,"inst_id"=>$this->inst_id,"inst_name"=>$this->inst_name,"inst_shortname"=>$this->inst_shortname,"inst_state"=>$this->inst_state,"inst_phone"=>$this->inst_phone,"inst_website"=>$this->inst_website,"principal_name"=>$this->principal_name,"inst_address"=>$this->inst_address,"inst_email"=>$this->inst_email);
+        $data=array("jwt"=>$this->jwt,"spoc_firstname"=>$this->spoc_firstname,"spoc_lastname"=>$this->spoc_lastname,"inst_id"=>$this->inst_id,"spoc_id"=>$this->spoc_id,"spoc_mobile"=>$this->spoc_mobile,"spoc_email"=>$this->spoc_email,"spoc_alternate_email"=>$this->spoc_alternate_email,"spoc_alternate_mobile"=>$this->spoc_alternate_mobile);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
        /* curl_setopt($curl, CURLOPT_POST, 1);
@@ -92,9 +90,9 @@ class Institute
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/api/institutes/delete.php";
+            $url="http://localhost:1080/eduskills/api/spocs/delete.php";
 
-        $data=array("jwt"=>$this->jwt,"inst_id"=>$this->inst_id);
+        $data=array("jwt"=>$this->jwt,"spoc_id"=>$this->spoc_id);
         //echo $url.$data['user_id'];
         $result=$this->callAPI($url,json_encode($data));
        /* curl_setopt($curl, CURLOPT_POST, 1);
