@@ -91,7 +91,7 @@ class User
         if(isset($_SESSION["jwt"]))
         {
             $this->jwt=$_SESSION["jwt"];
-            $url="http://localhost:1080/eduskills/users/spocs/delete.php";
+            $url="http://localhost:1080/eduskills/api/users/delete.php";
 
         $data=array("jwt"=>$this->jwt,"user_id"=>$this->user_id);
         //echo $url.$data['user_id'];

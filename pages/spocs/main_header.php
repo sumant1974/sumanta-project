@@ -89,7 +89,7 @@
                     <h3 class="box-title">Spocs</h3>
                     <div cg-busy="myPromise"></div>
                 </div>
-                
+
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="spoc-table" class="table table-bordered table-striped dataTable" datatable="ng"
@@ -269,18 +269,18 @@
                         <h4 class="modal-title">Add New Spoc</h4>
                     </div>
                     <div class="modal-body">
-                    <div class="form-group" >
+                        <div class="form-group">
                             <label for="Spoc Firstname">Select Institute</label>
-                            <select type="text" class="form-control" id="inst_id"
-                                placeholder="Select Institute" name="inst_id" ng-model="inst_id"
-                                required>
+                            <select type="text" class="form-control" id="inst_id" placeholder="Select Institute"
+                                name="inst_id" ng-model="inst_id" required>
                                 <options value="">==Select Institute==</options>
                                 <option ng-repeat="inst in insts" value="{{inst.inst_id}}">{{inst.inst_name}}</option>
-                                </select>
+                            </select>
 
                             <span style="color:red"
                                 ng-show="form_edit.spoc_firstname.$dirty && form_edit.spoc_firstname.$invalid">
-                                <span ng-show="form_edit.spoc_firstname.$error.required">Select Institute to Continue</span>
+                                <span ng-show="form_edit.spoc_firstname.$error.required">Select Institute to
+                                    Continue</span>
                             </span>
                         </div>
                         <div class="form-group">
@@ -313,6 +313,21 @@
                             <span style="color:red"
                                 ng-show="form_edit.spoc_email.$dirty && form_edit.spoc_email.$invalid">
                                 <span ng-show="form_edit.spoc_email.$error.required">Spoc Email is
+                                    required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Spoc Email">Spoc User Password</label>
+                            <input type="password" class="form-control" id="spoc_password" placeholder="Enter Spoc Password"
+                                name="spoc_password" ng-model="spoc_password" required>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="autopass" ng-change="autogenpass()">Auto Generate Password</input>
+                                </label>
+                            </div>
+                            <span style="color:red"
+                                ng-show="form_edit.spoc_email.$dirty && form_edit.spoc_email.$invalid">
+                                <span ng-show="form_edit.spoc_email.$error.required">Spoc Password is
                                     required.</span>
                             </span>
                         </div>
@@ -368,7 +383,7 @@ app.controller('spocCtrl', function($scope, $http, $resource, DTOptionsBuilder) 
             $scope.insts = response.data;
         });
 
-     $scope.myPromise = $resource('getspocs.php').query().$promise
+    $scope.myPromise = $resource('getspocs.php').query().$promise
         .then(function(response) {
             $scope.spocs = response;
         });
@@ -379,7 +394,7 @@ app.controller('spocCtrl', function($scope, $http, $resource, DTOptionsBuilder) 
         $scope.spoc_alternate_email = $scope.spocs[index].spoc_alternate_email;
         $scope.spoc_mobile = $scope.spocs[index].spoc_mobile;
         $scope.spoc_alternate_mobile = $scope.spocs[index].spoc_alternate_mobile;
-        $scope.spoc_id=$scope.spocs[index].spoc_id;
+        $scope.spoc_id = $scope.spocs[index].spoc_id;
         //outlineeditor.insertHtml($scope.course_outline);
     }
     $scope.spoc_delete = function(index) {
@@ -414,6 +429,27 @@ app.controller('createCtrl', function($scope, $http) {
         .then(function(response) {
             $scope.insts = response.data;
         });
-    
+$scope.autogenpass = function(){
+    if($scope.autopass)
+    {
+        $scope.spoc_password = "";
+        $scope.upperCaseArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+      $scope.lowerCaseArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+      $scope.numbersArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+      for (var i=0; i<12; i++)
+      {
+        $scope.upperLowerArray = $scope.upperCaseArray.concat($scope.lowerCaseArray); 
+          $scope.upperLowerNumbersArray = $scope.upperLowerArray.concat($scope.numbersArray); 
+          $scope.temp = Math.floor(Math.random()*$scope.upperLowerNumbersArray.length);
+          $scope.spoc_password += $scope.upperLowerNumbersArray[$scope.temp]; 
+      }
+    }
+    else
+    {
+        $scope.spoc_password = "";
+    }
+}
+
+
 });
 </script>
